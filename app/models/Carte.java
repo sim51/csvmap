@@ -26,4 +26,7 @@ public class Carte {
     public String              user_uuid;
     public final static String USER_UUID       = "USER_UUID";
 
+    public String              pattern;
+    public final static String PATTERN         = "PATTERN";
+
 }

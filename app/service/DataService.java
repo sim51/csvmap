@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import models.Carte;
 import models.Data;
 
 import com.mongodb.DBCollection;
@@ -14,7 +15,7 @@ public class DataService {
 
     public static List<Data> getDataFromCarte(String uuid) {
         List<Data> datas = new ArrayList<Data>();
-
+        Carte carte = CarteService.findMapByUuid(uuid);
         DBCollection dataColl = MongoDb.db().getCollection("carte-" + uuid);
         DBCursor cursor = dataColl.find();
 
@@ -29,23 +30,40 @@ public class DataService {
             if (mongo.containsField(Geocoding.LONGITUDE))
                 data.longitude = Float.valueOf((String) mongo.get(Geocoding.LONGITUDE));
 
-            String txt = "<ul>";
             List<String> headers = DataService.getDataHeader(uuid);
-            for (int j = 0; j < headers.size(); j++) {
-                String key = headers.get(j);
-                if (!key.equals("UUID")) {
-                    if (mongo.containsField(key)) {
-                        if (!key.equals(Geocoding.LATITUDE) && !key.equals(Geocoding.LONGITUDE)) {
-                            txt += "<li><strong>" + key + ":</strong>" + mongo.get(key) + "</li>";
+            String txt = "";
+            if (carte.pattern != null && !carte.pattern.equals("")) {
+                txt = carte.pattern;
+                for (int j = 0; j < headers.size(); j++) {
+                    String key = headers.get(j);
+                    if (!key.equals("UUID")) {
+                        String value = "";
+                        if (mongo.containsField(key)) {
+                            value = "" + mongo.get(key);
                         }
-                        data.data.add((String) mongo.get(key));
-                    }
-                    else {
-                        data.data.add("");
+                        data.data.add(value);
+                        txt = txt.replaceAll("\\{\\{" + key + "\\}\\}", value);
                     }
                 }
             }
-            data.text = txt;
+            else {
+                txt = "<ul>";
+                for (int j = 0; j < headers.size(); j++) {
+                    String key = headers.get(j);
+                    if (!key.equals("UUID")) {
+                        if (mongo.containsField(key)) {
+                            if (!key.equals(Geocoding.LATITUDE) && !key.equals(Geocoding.LONGITUDE)) {
+                                txt += "<li><strong>" + key + ":</strong>" + mongo.get(key) + "</li>";
+                            }
+                            data.data.add((String) mongo.get(key));
+                        }
+                        else {
+                            data.data.add("");
+                        }
+                    }
+                }
+            }
+            data.text = txt.replaceAll("[\n\r]", "");
             datas.add(data);
         }
         return datas;

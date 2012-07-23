@@ -29,7 +29,7 @@ public class Carte extends AbstractController {
     }
 
     public static void edit(String uuid) {
-        isValidUser();
+        isMyCarte(uuid);
         models.Carte carte = CarteService.findMapByUuid(uuid);
         if (carte != null) {
             render(carte);
@@ -41,7 +41,7 @@ public class Carte extends AbstractController {
 
     public static void save(@Valid models.Carte carte) {
         flash.clear();
-        isValidUser();
+        isMyCarte(carte.uuid);
         if (!validation.valid(carte).ok) {
             validation.keep();
             params.flash();
@@ -59,7 +59,7 @@ public class Carte extends AbstractController {
 
     public static void importCSV(@Required File csv, @Required String uuid, String geocodingString, Boolean reset) {
         validation.clear();
-        isValidUser();
+        isMyCarte(uuid);
         if (validation.hasErrors()) {
             validation.keep();
             params.flash();
@@ -71,7 +71,7 @@ public class Carte extends AbstractController {
         }
         Integer nbItem = 0;
         try {
-            nbItem = ImportCSV.doJobWithResult(csv, carte, geocodingString);
+            nbItem = await(new ImportCSV(csv, carte, geocodingString).now());
         } catch (Exception e) {
             flash.error(e.getMessage());
             params.flash();
@@ -82,7 +82,7 @@ public class Carte extends AbstractController {
     }
 
     public static void delete(@Required String uuid) {
-        isValidUser();
+        isMyCarte(uuid);
         if (validation.hasErrors()) {
             validation.keep();
             params.flash();
@@ -94,7 +94,7 @@ public class Carte extends AbstractController {
         User.cartes();
     }
 
-    public static void view(String uuid) {
+    public static void view(String uuid, String mode) {
         models.Carte carte = CarteService.findMapByUuid(uuid);
         List<Data> datas = DataService.getDataFromCarte(carte.uuid);
         Boolean mine = Boolean.FALSE;
@@ -106,7 +106,15 @@ public class Carte extends AbstractController {
             }
 
         }
-        render(carte, datas, mine);
+        Boolean iframe = Boolean.FALSE;
+        if (mode != null && mode.equals("iframe")) {
+            iframe = Boolean.TRUE;
+        }
+        String height = "600";
+        if (params.get("height") != null) {
+            height = params.get("height");
+        }
+        render(carte, datas, mine, iframe, height);
     }
 
     public static void data(String uuid) {
@@ -128,5 +136,22 @@ public class Carte extends AbstractController {
     public static void updatedata() {
         isValidUser();
         render();
+    }
+
+    private static void isMyCarte(String uuid) {
+        isValidUser();
+        models.Carte carte = CarteService.findMapByUuid(uuid);
+        Boolean mine = Boolean.FALSE;
+        SocialUser socialUser = SecureSocial.getCurrentUser();
+        if (socialUser != null) {
+            models.User user = UserService.findUser(socialUser.id);
+            if (user.uuid.equals(carte.user_uuid)) {
+                mine = Boolean.TRUE;
+            }
+
+        }
+        if (!mine) {
+            forbidden();
+        }
     }
 }

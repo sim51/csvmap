@@ -57,6 +57,7 @@ public class CarteService {
         mongoCarte.put(Carte.CENTER_ZOOM, carte.centerZoom);
         mongoCarte.put(Carte.LEAFT_PILE_ZOOM, carte.leafPileZoom);
         mongoCarte.put(Carte.USER_UUID, carte.user_uuid);
+        mongoCarte.put(Carte.PATTERN, carte.pattern);
         if (carte.uuid != null && !carte.uuid.equals("")) {
             mongoCarte.put(Carte.UUID, carte.uuid);
             carteColl.update(new BasicDBObject().append(Carte.UUID, carte.uuid), mongoCarte);
@@ -110,6 +111,9 @@ public class CarteService {
 
         if (mongoCarte.containsField(Carte.UUID))
             carte.uuid = (String) mongoCarte.get(Carte.UUID);
+
+        if (mongoCarte.containsField(Carte.PATTERN))
+            carte.pattern = (String) mongoCarte.get(Carte.PATTERN);
 
         return carte;
     }

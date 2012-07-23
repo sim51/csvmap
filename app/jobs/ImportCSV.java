@@ -9,6 +9,7 @@ import java.util.Map;
 
 import models.Carte;
 import play.Logger;
+import play.jobs.Job;
 import play.libs.Codec;
 import service.Geocoding;
 import service.MongoDb;
@@ -16,9 +17,30 @@ import service.MongoDb;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 
-public class ImportCSV {
+public class ImportCSV extends Job<Integer> {
 
-    public static Integer doJobWithResult(File csv, Carte carte, String geocodingString) throws Exception {
+    private File   csv;
+    private Carte  carte;
+    private String geocodingString;
+
+    /**
+     * Constructor.
+     * 
+     * @param csv
+     * @param carte
+     * @param geocodingString
+     */
+    public ImportCSV(File csv, Carte carte, String geocodingString) {
+        super();
+        this.csv = csv;
+        this.carte = carte;
+        this.geocodingString = geocodingString;
+    }
+
+    /**
+     * Do Job.
+     */
+    public Integer doJobWithResult() throws Exception {
         Boolean geocoding = Boolean.FALSE;
         String[] format = new String[0];
         if (geocodingString != null) {

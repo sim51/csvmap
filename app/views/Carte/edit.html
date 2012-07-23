@@ -118,7 +118,16 @@
                     </div>
                 </div>
                 
-                
+                <div class="control-group #{ifError 'pattern'}error#{/ifError}">
+                    <label class="control-label" for="pattern">&{'page.carte.item.pattern'}</label>
+                    <div class="controls">
+                        <textarea name="carte.pattern" id="pattern" class="xxlarge" rows="3">${carte?.pattern}</textarea>
+                        <p class="help-block">&{'page.carte.item.pattern.help'}</p>
+                        #{if errors.forKey('carte.pattern')}
+                            <span class="help-inline">#{error 'carte.pattern' /}</span>
+                        #{/if}
+                    </div>
+                </div>
                 
             </fieldset>
             

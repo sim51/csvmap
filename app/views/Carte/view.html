@@ -1,4 +1,9 @@
-#{extends 'main.html' /} 
+#{if iframe}
+    #{extends 'vide.html' /} 
+#{/if}
+#{else}
+    #{extends 'main.html' /}
+#{/else}
 
 #{set title:carte.name /}
 
@@ -45,33 +50,21 @@
 
 <div class="row">
     <div class="span12">
-        <h2>
-            &{'page.carte.carte'}
-            <a href="@{Carte.view(carte.uuid)}" title="&{'page.carte.see'}"> 
-                <i class="icon-eye-open"></i> 
-            </a> 
-            <a href="@{Carte.data(carte.uuid)}" class="edit" title="&{'page.carte.data'}"> 
-                <i class="icon-hdd"></i> 
-            </a>
-            #{if mine}
-                <a href="@{Carte.edit(carte.uuid)}" title="&{'page.carte.edit'}" > 
-                    <i class="icon-cog"></i> 
-                </a> 
-                <a href="@{Carte.delete(carte.uuid)}" class="delete" title="&{'page.carte.delete'}"> 
-                    <i class="icon-remove"></i> 
-                </a>
-            #{/if}
-         </h2>
-        <p>
-            ${carte.description}
-        </p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="span12">
-        <div id="map" style="height:600px;" class="smallmap">
+        <div id="map" style="height:${height}px;" class="smallmap">
         </div>
     </div>
 </div>
- 
+
+#{if !iframe}
+    <div class="row">
+        <div class="span12">
+            <h2>&{'page.carte.partager'}</h2>
+            <p>
+                &{'page.carte.partager.text'}
+            </p>
+            <div class="well">
+                &lt;iframe src="http://csvmap.logisima.com/carte/iframe/${carte.uuid}?height=300"&gt;&lt;/iframe&gt;
+            </div>
+        </div>
+    </div> 
+#{/if}
