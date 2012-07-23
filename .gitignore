@@ -1,0 +1,9 @@
+mongo
+tmp
+logs
+.classpath
+eclipse
+.project
+.settings
+conf/application.conf
+modules
