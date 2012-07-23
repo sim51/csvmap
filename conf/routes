@@ -7,10 +7,11 @@ GET     /about                                                                  
 GET     /contact                                                                                    Application.contact
 POST    /contact                                                                                    Application.sendContact
 GET     /map                                                                                        Carte.index
+GET     /carte/add                                                                                  Carte.add
 GET     /carte/{uuid}                                                                               Carte.view
 GET     /carte/data/{uuid}                                                                          Carte.data
 GET     /carte/edit/{uuid}                                                                          Carte.edit
-GET     /carte/delete/{uuid}                                                                          Carte.delete
+GET     /carte/delete/{uuid}                                                                        Carte.delete
 GET     /carte/{mode}/{uuid}                                                                        Carte.view
 GET     /user/cartes                                                                                User.cartes
 GET     /user/myprofile                                                                             User.myProfile
