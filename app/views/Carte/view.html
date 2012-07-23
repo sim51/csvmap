@@ -48,30 +48,32 @@
     </script>
 #{/set}
 
-<div class="row">
-    <div class="span12">
-        <h2>
-            &{'page.carte.carte'}
-            <a href="@{Carte.view(carte.uuid)}" title="&{'page.carte.see'}"> 
-                <i class="icon-eye-open"></i> 
-            </a> 
-            <a href="@{Carte.data(carte.uuid)}" class="edit" title="&{'page.carte.data'}"> 
-                <i class="icon-hdd"></i> 
-            </a>
-            #{if mine}
-                <a href="@{Carte.edit(carte.uuid)}" title="&{'page.carte.edit'}" > 
-                    <i class="icon-cog"></i> 
+#{if !iframe}
+    <div class="row">
+        <div class="span12">
+            <h2>
+                &{'page.carte.carte'}
+                <a href="@{Carte.view(carte.uuid)}" title="&{'page.carte.see'}"> 
+                    <i class="icon-eye-open"></i> 
                 </a> 
-                <a href="@{Carte.delete(carte.uuid)}" class="delete" title="&{'page.carte.delete'}"> 
-                    <i class="icon-remove"></i> 
+                <a href="@{Carte.data(carte.uuid)}" class="edit" title="&{'page.carte.data'}"> 
+                    <i class="icon-hdd"></i> 
                 </a>
-            #{/if}
-         </h2>
-        <p>
-            ${carte.description}
-        </p>
+                #{if mine}
+                    <a href="@{Carte.edit(carte.uuid)}" title="&{'page.carte.edit'}" > 
+                        <i class="icon-cog"></i> 
+                    </a> 
+                    <a href="@{Carte.delete(carte.uuid)}" class="delete" title="&{'page.carte.delete'}"> 
+                        <i class="icon-remove"></i> 
+                    </a>
+                #{/if}
+             </h2>
+            <p>
+                ${carte.description}
+            </p>
+        </div>
     </div>
-</div>
+#{/if}
 
 <div class="row">
     <div class="span12">
