@@ -9,8 +9,8 @@ footer1=Ce projet est sous la <a target="_blank" title="Licence GPL" href="http:
 footer2=&copy; <a href="hhtp://www.bsimard.com">Benoît SImard</a>
 
 page.home=Accueil
-page.home.edito=Bienvenue
-page.home.edito.txt=<p>Ce site vous permet de générer simplement des cartes intéractives, à partir d'un simple fichier CSV !</p><p>Les cartes produites sont alors accessibles à tous, et le rendu est sur un fond de carte OSM.</p>
+page.home.edito=Version Béta !
+page.home.edito.txt=<p>Ce site vous permet de générer simplement des cartes intéractives, à partir d'un simple fichier CSV !<br />Les cartes produites sont alors accessibles à tous, et le rendu est sur un fond de carte OSM.</p><p>Comment faire ? <ul><lo>Connecter vous</lo><lo>Une fois connecté, cliquez sur vore avatar (en haut à droit)</lo><lo>Sélectionnez "Mes carte"</lo><lo>Suivez les instructions de la page !</lo></p>
 page.home.libertic.rss=Libertic
 page.home.libertic.rss.txt=Les derniers tickets de Libertic
 page.home.lastupdate=Les dernières cartes
