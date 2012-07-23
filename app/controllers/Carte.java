@@ -41,7 +41,12 @@ public class Carte extends AbstractController {
 
     public static void save(@Valid models.Carte carte) {
         flash.clear();
-        isMyCarte(carte.uuid);
+        if (carte.uuid != null && !carte.uuid.equals("")) {
+            isMyCarte(carte.uuid);
+        }
+        else {
+            isValidUser();
+        }
         if (!validation.valid(carte).ok) {
             validation.keep();
             params.flash();
