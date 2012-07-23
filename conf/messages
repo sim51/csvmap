@@ -5,7 +5,7 @@ project.name=Libertic-mapgenerator
 error=Erreur !
 error.checkform=Veuillez vérifier les informations que vous avez saisi.
 cancel=Annuler
-footer1=Ce projet est sous la <a target="_blank" title="Licence GPL" href="http://www.gnu.org/licenses/gpl.html">GNU General Public Licence (GPL)</a>. Les sources sont hébergées sur <a target="_blank" href="https://github.com/sim51/mapgenerator">github</a>. 
+footer1=Ce projet est sous la <a target="_blank" title="Licence GPL" href="http://www.gnu.org/licenses/gpl.html">GNU General Public Licence (GPL)</a>. Les sources sont hébergées sur <a target="_blank" href="https://github.com/sim51/csvmap">github</a>. 
 footer2=&copy; <a href="hhtp://www.bsimard.com">Benoît SImard</a>
 
 page.home=Accueil
@@ -20,7 +20,7 @@ page.login=Se connecter
 
 page.about=A propos
 page.about.demarche=Notre démarche
-page.about.demarche.txt=<p>Ce site provient d'une idée lors du hackathon de LiberTIC en Juillet 2012. Elle vient du constat qu'à chaque hackathon, on passe plus de temps avec la technique pour créer un carte qu'a croiser les données et à les analyser.</p><p>Le site s'inspire de <a href="http://batchgeo.com/fr/">batchgeo</a> puisque c'est le même principe. Toutefois, ici les cartes possèdent un fond de carte OSM !</p>
+page.about.demarche.txt=<p>Ce site provient d'une idée lors du hackathon de LiberTIC en Juillet 2012. Elle vient du constat qu'à chaque hackathon, on passe plus de temps avec la technique pour créer une carte qu'à croiser les données et à les analyser.</p><p>Le site s'inspire de <a href="http://batchgeo.com/fr/">batchgeo</a> puisque c'est le même principe. Toutefois, ici les cartes possèdent un fond de carte OSM !</p>
 page.about.tech=Technique
 page.about.tech.txt=<p>La plateforme technique de ce projet est basée intégralement sur des briques open-sources :</p><ul><li>Bootstrap de twitter</li><li>Play! framework! (with SecureSocial & less module)</li><li>MongoDB</li><li>Jquery</li><li>Leaft</li><li>nginx</li><li>Debian</li></ul>
 page.about.thanks=Remerciements
@@ -51,14 +51,14 @@ page.carte.item.centerLat=Latitude du centre de la carte
 page.carte.item.centerZoom=Niveau de zoom par défaut
 page.carte.item.leafPileZoom=Niveau du cluster des noeuds
 page.carte.item.pattern=Modèle des infos-bulles
-page.carte.item.pattern.help=Ce champs permet de réaliser un modèle pour les infos-bulles de la carte. Ecrivez du code html en utilisant des variables du genre "{{nom_colonne}}". Si vous laissez ce champ vide, toutes les informations seront affichées sous forme de liste.
+page.carte.item.pattern.help=Ce champs permet de réaliser un modèle pour les infos-bulles de la carte. Ecrivez du code html en utilisant des variables du genre "{{nom_colonne}}".<br/> Si vous laissez ce champ vide, toutes les informations seront affichées sous forme de liste.
 page.carte.save=Enregistrer
 page.carte.import=Importer
 page.carte.import=Import de données
-page.carte.import.text=<p>Ce formulaire permet d'importer les données d'un fihier CSV.</p><p>Votre fichier CSV doit valider les règles suivantes<ul><li>La première de votre fihier contient l'entête des colonnes</li><li>Le caratère de spérataion est le ";"</li><li>L'encodage du fichier est l'UTF-8</li><li>Si votre fichier contient déjà les coordonnées géospatiales, le nom des colonnes doivent être LATITUDE & LONGITUDE</li></ul></p>
+page.carte.import.text=<p>Ce formulaire permet d'importer les données d'un fihier CSV.</p><p>Votre fichier CSV doit valider les règles suivantes<ul><li>La première ligne de votre fihier contient l'entête des colonnes</li><li>Le caratère de spérataion est le ";"</li><li>L'encodage du fichier est l'UTF-8</li><li>Si votre fichier contient déjà les coordonnées géospatiales, le nom des colonnes doivent être LATITUDE & LONGITUDE</li></ul></p>
 page.carte.item.csv=Fichier CSV
 page.carte.item.geocoding=Format de l'adresse
-page.carte.item.geocoding.help=Ce champ est requis pour si vous souhaitez geolocaliser vos items. Il permet de concatener plusieurs colonne du fichier CSV pour obtenir une adresse bien formater à envoyer aux servces de géolocalisation.<br/>Par exemple si vous voulez le pattern "{col1}, {col3}, FRANCE", il faut renseigner "1+ ,+3+, FRANCE".
+page.carte.item.geocoding.help=Ce champ est requis si vous souhaitez geolocaliser vos items. Il permet de concatener plusieurs colonnes du fichier CSV pour obtenir une adresse bien formater à envoyer aux servces de géolocalisation.<br/>Par exemple si vous voulez le pattern "{col1},{col3},FRANCE", il faut renseigner "1+,+3+,FRANCE".
 page.carte.item.reset=Reinitialiser ?
 page.carte.item.reset.help=Supprimer les données existantes
 page.carte.partager=Partager la carte
