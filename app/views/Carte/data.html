@@ -1,0 +1,124 @@
+#{extends 'main.html' /} 
+
+#{set title:carte.name /}
+
+<div class="row">
+    <div class="span12">
+        <h2>
+            &{'page.carte.data'}
+            <a href="@{Carte.view(carte.uuid)}" title="&{'page.carte.see'}"> 
+                <i class="icon-eye-open"></i> 
+            </a> 
+            <a href="@{Carte.data(carte.uuid)}" class="edit" title="&{'page.carte.data'}"> 
+                <i class="icon-hdd"></i> 
+            </a>
+            #{if mine}
+                <a href="@{Carte.edit(carte.uuid)}" title="&{'page.carte.edit'}" > 
+                    <i class="icon-cog"></i> 
+                </a> 
+                <a href="@{Carte.delete(carte.uuid)}" class="delete" title="&{'page.carte.delete'}"> 
+                    <i class="icon-remove"></i> 
+                </a>
+            #{/if}
+         </h2>
+         <p>
+            ${carte.description}
+         </p>
+    </div>
+</div>
+
+#{if datas.size() > 0}
+    <div class="row">
+        <div class="span12">
+            <table class="table table-striped .table-condensed">
+                <thead>
+                    <tr>
+                        #{list items:headers, as:'header'}
+                            <th>${header.raw()}</th>
+                        #{/list}
+                    </tr>  
+                </thead>
+                <tbody>  
+                    #{list items:datas, as:'data'}
+                        <tr>
+                            #{list items:data.data, as:'item'}
+                                <td>${item.raw()}</td>
+                            #{/list}
+                        </tr>
+                    #{/list}
+                </tbody>
+            </table>
+        </div>
+    </div>
+#{/if}
+
+#{if mine}
+    <div class="row">
+        <div class="span12">
+            #{form @Carte.importCSV(), class:"form-horizontal", enctype:'multipart/form-data'}
+                <fieldset>
+                    <legend>&{'page.carte.import'}</legend>
+                    
+                    <div class="alert alert-info">
+                        &{'page.carte.import.text'}
+                    </div>
+                
+                    #{ifErrors}
+                        <div class="alert alert-error">
+                            <strong>&{'error'}</strong>&{'error.checkform'}
+                        </div>
+                    #{/ifErrors}
+                     #{if flash.success}
+                        <div class="alert alert-success">
+                            ${flash.success}
+                        </div>
+                    #{/if}
+                    #{if flash.error}
+                        <div class="alert alert-error">
+                            ${flash.error}
+                        </div>
+                    #{/if}
+                    
+                    <input type="hidden" name="uuid" value="${carte?.uuid}"/>
+                    <input type="hidden" name="carte.user_uuid" value="${carte?.user_uuid}"/>
+                    
+                    <div class="control-group #{ifError 'csv'}error#{/ifError}">
+                        <label class="control-label" for="csv">&{'page.carte.item.csv'}</label>
+                        <div class="controls">
+                            <input type="file" id="csv" name="csv" />
+                            #{if errors.forKey('csv')}
+                                <span class="help-inline">#{error 'csv' /}</span>
+                            #{/if}
+                        </div>
+                    </div>
+                    
+                    <div class="control-group #{ifError 'reset'}error#{/ifError}">
+                        <label class="control-label" for="reset">&{'page.carte.item.reset'}</label>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input name="reset" id="reset" type="checkbox" value="true">
+                                &{'page.carte.item.reset.help'}
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group #{ifError 'geocodingString'}error#{/ifError}">
+                        <label class="control-label" for="geocodingString">&{'page.carte.item.geocoding'}</label>
+                        <div class="controls">
+                            <input type="text" id="geocodingString" name="geocodingString" value="" />
+                            <p class="help-block">&{'page.carte.item.geocoding.help'}</p>
+                            #{if errors.forKey('geocodingString')}
+                                <span class="help-inline">#{error 'geocodingString' /}</span>
+                            #{/if}
+                        </div>
+                    </div>
+                    
+                </fieldset>
+                
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">&{'page.carte.import'}</button>
+                </div>
+            #{/form}
+       </div>
+    </div>
+#{/if}

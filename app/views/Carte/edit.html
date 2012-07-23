@@ -1,0 +1,130 @@
+#{extends 'main.html' /} 
+#{if carte}
+     #{set title:carte.name /}
+#{/if}
+#{else}
+     #{set title:messages.get('page.carte.creercarte')/}
+#{/else}
+
+<div class="row">
+    <div class="span12">
+        #{form @Carte.save(), class:"form-horizontal"}
+            <fieldset>
+                <legend>&{'page.carte.form'}</legend>
+            
+                #{ifErrors}
+                    <div class="alert alert-error">
+                        <strong>&{'error'}</strong>&{'error.checkform'}
+                    </div>
+                #{/ifErrors}
+                 #{if flash.success}
+                    <div class="alert alert-success">
+                        ${flash.success}
+                    </div>
+                #{/if}
+                
+                <input type="hidden" name="carte.uuid" value="${carte?.uuid}"/>
+                <input type="hidden" name="carte.user_uuid" value="${carte?.user_uuid}"/>
+                
+                <div class="control-group #{ifError 'carte.name'}error#{/ifError}">
+                    <label class="control-label" for="name">&{'page.carte.item.name'}</label>
+                    <div class="controls">
+                        <input type="text" id="name" name="carte.name" value="${carte?.name}" placeholder="Ma carte"/>
+                        #{if errors.forKey('carte.name')}
+                            <span class="help-inline">#{error 'carte.name' /}</span>
+                        #{/if}
+                    </div>
+                </div>
+                
+                <div class="control-group #{ifError 'carte.description'}error#{/ifError}">
+                    <label class="control-label" for="description">&{'page.carte.item.description'}</label>
+                    <div class="controls">
+                        <textarea name="carte.description" id="description" class="xxlarge" rows="3">${carte?.description}</textarea>
+                        #{if errors.forKey('carte.description')}
+                            <span class="help-inline">#{error 'carte.description' /}</span>
+                        #{/if}
+                    </div>
+                </div>
+                
+                <div class="control-group #{ifError 'centerLng'}error#{/ifError}">
+                    <label class="control-label" for="centerLng">&{'page.carte.item.centerLng'}</label>
+                    <div class="controls">
+                        <input type="text" id="centerLng" name="carte.centerLng" value="${carte?.centerLng}" placeholder="1.18"/>
+                        #{if errors.forKey('carte.centerLng')}
+                            <span class="help-inline">#{error 'carte.centerLng' /}</span>
+                        #{/if}
+                    </div>
+                </div>
+                
+                <div class="control-group #{ifError 'centerLat'}error#{/ifError}">
+                    <label class="control-label" for="centerLat">&{'page.carte.item.centerLat'}</label>
+                    <div class="controls">
+                        <input type="text" id="centerLat" name="carte.centerLat" value="${carte?.centerLat}" placeholder="47.24"/>
+                        #{if errors.forKey('carte.centerLat')}
+                            <span class="help-inline">#{error 'carte.centerLat' /}</span>
+                        #{/if}
+                    </div>
+                </div>
+                
+                <div class="control-group #{ifError 'centerZoom'}error#{/ifError}">
+                    <label class="control-label" for="centerZoom">&{'page.carte.item.centerZoom'}</label>
+                    <div class="controls">
+                        #{select 'carte.centerZoom', value:carte?.centerZoom, id:'centerZoom', class:'small'}
+                            #{option 1}1#{/option}
+                            #{option 2}2#{/option}
+                            #{option 3}3#{/option}
+                            #{option 4}4#{/option}
+                            #{option 5}5#{/option}
+                            #{option 6}6#{/option}
+                            #{option 7}7#{/option}
+                            #{option 8}8#{/option}
+                            #{option 9}9#{/option}
+                            #{option 10}10#{/option}
+                            #{option 11}11#{/option}
+                            #{option 12}12#{/option}
+                            #{option 13}13#{/option}
+                            #{option 14}14#{/option}
+                            #{option 15}15#{/option}
+                        #{/select}
+                        #{if errors.forKey('carte.centerZoom')}
+                            <span class="help-inline">#{error 'carte.centerZoom' /}</span>
+                        #{/if}
+                    </div>
+                </div>
+                
+                <div class="control-group #{ifError 'leafPileZoom'}error#{/ifError}">
+                    <label class="control-label" for="leafPileZoom">&{'page.carte.item.leafPileZoom'}</label>
+                    <div class="controls">
+                        #{select 'carte.leafPileZoom', value:carte?.leafPileZoom, id:'leafPileZoom', class:'small'}
+                            #{option 1}1#{/option}
+                            #{option 2}2#{/option}
+                            #{option 3}3#{/option}
+                            #{option 4}4#{/option}
+                            #{option 5}5#{/option}
+                            #{option 6}6#{/option}
+                            #{option 7}7#{/option}
+                            #{option 8}8#{/option}
+                            #{option 9}9#{/option}
+                            #{option 10}10#{/option}
+                            #{option 11}11#{/option}
+                            #{option 12}12#{/option}
+                            #{option 13}13#{/option}
+                            #{option 14}14#{/option}
+                            #{option 15}15#{/option}
+                        #{/select}
+                        #{if errors.forKey('carte.leafPileZoom')}
+                            <span class="help-inline">#{error 'carte.leafPileZoom' /}</span>
+                        #{/if}
+                    </div>
+                </div>
+                
+                
+                
+            </fieldset>
+            
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">&{'page.carte.save'}</button>
+            </div>
+        #{/form}
+   </div>
+</div>

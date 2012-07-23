@@ -1,0 +1,130 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+project.name=Libertic-mapgenerator
+error=Erreur !
+error.checkform=Veuillez vérifier les informations que vous avez saisi.
+cancel=Annuler
+footer1=Ce projet est sous la <a target="_blank" title="Licence GPL" href="http://www.gnu.org/licenses/gpl.html">GNU General Public Licence (GPL)</a>. Les sources sont hébergées sur <a target="_blank" href="https://github.com/sim51/mapgenerator">github</a>. 
+footer2=&copy; <a href="hhtp://www.bsimard.com">Benoît SImard</a>
+
+page.home=Accueil
+page.home.edito=Bienvenue
+page.home.edito.txt=<p>Ce site vous permet de générer simplement des cartes intéractives, à partir d'un simple fichier CSV !</p><p>Les cartes produites sont alors accessibles à tous, et le rendu est sur un fond de carte OSM.</p>
+page.home.libertic.rss=Libertic
+page.home.libertic.rss.txt=Les derniers tickets de Libertic
+page.home.lastupdate=Les dernières cartes
+page.home.new=Nouveau !
+page.home.update=Mis à jour
+page.login=Se connecter
+
+page.about=A propos
+page.about.demarche=Notre démarche
+page.about.demarche.txt=<p>Ce site provient d'une idée lors du hackathon de LiberTIC en Juillet 2012. Elle vient du constat qu'à chaque hackathon, on passe plus de temps avec la technique pour créer un carte qu'a croiser les données et à les analyser.</p><p>Le site s'inspire de <a href="http://batchgeo.com/fr/">batchgeo</a> puisque c'est le même principe. Toutefois, ici les cartes possèdent un fond de carte OSM !</p>
+page.about.tech=Technique
+page.about.tech.txt=<p>La plateforme technique de ce projet est basée intégralement sur des briques open-sources :</p><ul><li>Bootstrap de twitter</li><li>Play! framework! (with SecureSocial & less module)</li><li>MongoDB</li><li>Jquery</li><li>Leaft</li><li>nginx</li><li>Debian</li></ul>
+page.about.thanks=Remerciements
+page.about.thanks.txt=Merci aux personnes suivantes pour leur participation au hackathon et à l'étincelle d'idée pour ce site
+page.abbout
+
+page.contact=Contact
+page.contact.txt=<p>Voous appréciez le service ? Vous voulez nous faire un petit retour ?<br/>Ou au contraire, vous trouvez que ce site ne sert strictement à rien ?</p><p>Vous pouvez nous contacter et vous exprimer librement via ce formulaire de contact.</p>
+page.contact.author=Votre nom
+page.contact.email=Votre adresse mail
+page.contact.message=Votre message
+page.contact.security=Code de sécurité
+page.contact.send=Envoyer
+
+page.carte=Les cartesFormat de l'adresse
+page.carte.title=Nom de la carte
+page.carte.data=Voir les données
+page.carte.delete=Supprimer la carte
+page.carte.see=Voir la carte
+page.carte.creercarte=Créer une nouvelle carte
+page.carte.data=Les données
+page.carte.carte=La carte
+page.carte.form=Formulaire
+page.carte.item.name=Nom
+page.carte.item.description=Description
+page.carte.item.centerLng=Longitude du centre de la carte
+page.carte.item.centerLat=Latitude du centre de la carte
+page.carte.item.centerZoom=Niveau de zoom par défaut
+page.carte.item.leafPileZoom=Niveau du cluster des noeuds
+page.carte.save=Enregistrer
+page.carte.import=Importer
+page.carte.import=Import de données
+page.carte.import.text=<p>Ce formulaire permet d'importer les données d'un fihier CSV.</p><p>Votre fichier CSV doit valider les règles suivantes<ul><li>La première de votre fihier contient l'entête des colonnes</li><li>Le caratère de spérataion est le ";"</li><li>L'encodage du fichier est l'UTF-8</li><li>Si votre fichier contient déjà les coordonnées géospatiales, le nom des colonnes doivent être LATITUDE & LONGITUDE</li></ul></p>
+page.carte.item.csv=Fichier CSV
+page.carte.item.geocoding=Format de l'adresse
+page.carte.item.geocoding.help=Ce champ est requis pour si vous souhaitez geolocaliser vos items. Il permet de concatener plusieurs colonne du fichier CSV pour obtenir une adresse bien formater à envoyer aux servces de géolocalisation.<br/>Par exemple si vous voulez le pattern "{col1}, {col3}, FRANCE", il faut renseigner "1+ ,+3+, FRANCE".
+page.carte.item.reset=Reinitialiser ?
+page.carte.item.reset.help=Supprimer les données existantes
+page.user.profil=Profil
+page.user.monprofil=Mon profil
+page.user.compteutilisateur=Compte utilisateur
+page.user.moncompte=Mon compte
+page.user.cartes=Les cartes
+page.user.mescartes=Mes cartes
+page.user.displayname=Nom
+page.user.mail=Email
+page.user.addAccount=Réseaux Sociaux
+page.user.addAccount.help=Vous pouvez lier votre compte à un réseau social. Pour se faire, cliquez simplement sur l'icone correspondante !
+page.user.edit=Mes informations
+page.user.edit.ici=ici
+page.user.edit.txt=Vous pouvez modifier les informations de votre profile en cliquant 
+page.user.edit.title=Modifier mon profile
+page.user.save=Enregistrer
+page.user.site=URL de votre site
+page.user.createcarte=Vous pouvez créer une nouvelle carte en cliquant 
+
+page.myprofile=Mon compte
+
+#
+# Login
+#
+securesocial.loginTitle=S'authentifier
+securesocial.login=S'authentifier
+securesocial.logout=Déconnexion
+securesocial.clickOnYourAccount=Utilisez votre compte sur l'un des réseaux suivants pour vous authentifier.
+securesocial.useEmailAndPassword=Où utilisez votre identifiant / password
+securesocial.email=Adresse mail
+securesocial.emailHelp=Exemple: john.doe@gmail.com
+securesocial.password=Password
+securesocial.signUp=S'enregistrer
+securesocial.wrongUserPass=Mauvaise tentative. Vérifier l'identifiant et/ou le password.
+securesocial.required=Obligatorie
+securesocial.invalidEmail=L'adresse mail n'est pas valide
+securesocial.signUp=Si vous ne possédez pas de compte, vous pouvez en créer un 
+securesocial.here=ici
+securesocial.badUserPasswordCombination=Mauvaise tentative. Vérifier l'identifiant et/ou le password.
+# [type] gets replaced by the provider id in the login page.
+# can't use %s because the string is being processed in javascript.
+securesocial.openIdUser=Username on [type]
+securesocial.openIdUserNotSpecified=Login non précisé !
+securesocial.authError=Une erreur est survenue lors de votre authentification. Veuillez ré-essayer.
+
+#
+# SignUp
+#
+securesocial.signUpTitle=Enregistrement
+securesocial.signUpLabel=Veuillez compléter le formulaire :
+securesocial.userName=identifiant
+securesocial.name=Votre nom
+securesocial.password2=Password (Confirmation)
+securesocial.cancel=Annuler
+securesocial.createAccount=S'enregistrer
+securesocial.passwordsMustMatch=Les passwords ne correspondent pas
+securesocial.userNameTaken=Ce login est déjà enregistré
+securesocial.activationTitle=Bienvenue %s
+securesocial.activationSuccess=Merci ! votre compte est à présent activé. Cliquez <a href="%s">ici</a> pour vous connectez.
+securesocial.activateTitle=Activation du compte
+securesocial.errorCreatingAccount=Une erreur est survenue lors de la création de votre compte. Veuillez ré-essayer.
+securesocial.accountNotActive=Votre compte n'est pas activé. S'il s'agit d'une erreur veuillez nous contacter via le formulaire de contact.
+securesocial.accountCreated=Vous êtes à présent enregistré. Un email vient de vous être envoyé pour valider la créationde votre compte.
+securesocial.invalidLink=Le lien d'activation de compte que vous venez de suivre est incorrect.
+
+#
+# Welcome email
+#
+securesocial.greeting=Bonjour %s,
+securesocial.emailText=Veuillez cliquer sur <a href="%s">ce lien</a> pour activer votre compte.
