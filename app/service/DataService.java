@@ -78,19 +78,15 @@ public class DataService {
         Integer i = 0;
         i++;
 
-        while (cursor.hasNext()) {
-            List<String> tempHeaders = new ArrayList<String>();
+        if (cursor.hasNext()) {
             DBObject mongo = cursor.next();
             Iterator<String> iter = mongo.keySet().iterator();
             iter.next();
             while (iter.hasNext()) {
                 String key = iter.next();
                 if (!key.equals("UUID")) {
-                    tempHeaders.add(key);
+                    headers.add(key);
                 }
-            }
-            if (tempHeaders.size() > headers.size()) {
-                headers = tempHeaders;
             }
         }
         return headers;
