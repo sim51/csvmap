@@ -50,7 +50,7 @@ public class Carte extends AbstractController {
         if (!validation.valid(carte).ok) {
             validation.keep();
             params.flash();
-            render("@add", carte);
+            render("@edit", carte);
         }
         validation.clear();
         if (carte.user_uuid == null | carte.user_uuid.equals("")) {
@@ -63,13 +63,13 @@ public class Carte extends AbstractController {
     }
 
     public static void importCSV(@Required File csv, @Required String uuid, String geocodingString, Boolean reset) {
-        validation.clear();
         isMyCarte(uuid);
         if (validation.hasErrors()) {
             validation.keep();
             params.flash();
-            edit(uuid);
+            data(uuid);
         }
+        validation.clear();
         models.Carte carte = CarteService.findMapByUuid(uuid);
         if (reset != null && reset) {
             DataService.deleteDataCarte(uuid);
