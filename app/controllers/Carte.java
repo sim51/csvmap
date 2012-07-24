@@ -138,9 +138,16 @@ public class Carte extends AbstractController {
         render(carte, datas, headers, mine);
     }
 
-    public static void updatedata() {
-        isValidUser();
-        render();
+    public static void dataline(String uuid, String id) {
+        Data data = DataService.findDataByUuid(uuid, id);
+        List<String> headers = DataService.getDataHeader(uuid);
+        render(headers, data);
+    }
+
+    public static void updatedata(String uuid, String id, String[] data) {
+        isMyCarte(uuid);
+        DataService.saveData(uuid, id, data);
+        data(uuid);
     }
 
     private static void isMyCarte(String uuid) {

@@ -62,6 +62,7 @@ page.carte.item.geocoding.help=Ce champ est requis si vous souhaitez geolocalise
 page.carte.item.reset=Reinitialiser ?
 page.carte.item.reset.help=Supprimer les données existantes
 page.carte.partager=Partager la carte
+page.carte.data=Fiche de la données
 page.carte.partager.text=Vous pouvez partager cette carte sur votre site internet en copiant le code suivant
 
 page.user.profil=Profil

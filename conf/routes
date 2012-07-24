@@ -8,8 +8,9 @@ GET     /contact                                                                
 POST    /contact                                                                                    Application.sendContact
 GET     /map                                                                                        Carte.index
 GET     /carte/add                                                                                  Carte.add
-POST    /carte/save                                                                                  Carte.save
+POST    /carte/save                                                                                 Carte.save
 GET     /carte/{uuid}                                                                               Carte.view
+GET     /carte/{uuid}/data/{id}                                                                     Carte.dataline
 GET     /carte/data/{uuid}                                                                          Carte.data
 GET     /carte/edit/{uuid}                                                                          Carte.edit
 GET     /carte/delete/{uuid}                                                                        Carte.delete

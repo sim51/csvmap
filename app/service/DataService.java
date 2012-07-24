@@ -7,6 +7,7 @@ import java.util.List;
 import models.Carte;
 import models.Data;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -29,6 +30,8 @@ public class DataService {
                 data.latitude = Float.valueOf((String) mongo.get(Geocoding.LATITUDE));
             if (mongo.containsField(Geocoding.LONGITUDE))
                 data.longitude = Float.valueOf((String) mongo.get(Geocoding.LONGITUDE));
+            if (mongo.containsField(Data.UUID))
+                data.uuid = (String) mongo.get(Data.UUID);
 
             List<String> headers = DataService.getDataHeader(uuid);
             String txt = "";
@@ -95,5 +98,68 @@ public class DataService {
     public static void deleteDataCarte(String uuid) {
         DBCollection dataColl = MongoDb.db().getCollection("carte-" + uuid);
         dataColl.drop();
+    }
+
+    public static Data findDataByUuid(String uuid, String id) {
+        Data data = new Data();
+        data.uuid = id;
+
+        DBCollection dataColl = MongoDb.db().getCollection("carte-" + uuid);
+        BasicDBObject query = new BasicDBObject();
+        query.put(Data.UUID, id);
+        DBCursor cursor = dataColl.find(query);
+
+        if (cursor.hasNext()) {
+            DBObject mongo = cursor.next();
+
+            if (mongo.containsField(Geocoding.LATITUDE))
+                data.latitude = Float.valueOf((String) mongo.get(Geocoding.LATITUDE));
+            if (mongo.containsField(Geocoding.LONGITUDE))
+                data.longitude = Float.valueOf((String) mongo.get(Geocoding.LONGITUDE));
+
+            List<String> headers = DataService.getDataHeader(uuid);
+            for (int j = 0; j < headers.size(); j++) {
+                String key = headers.get(j);
+                if (!key.equals("UUID")) {
+                    String value = "";
+                    if (mongo.containsField(key)) {
+                        value = "" + mongo.get(key);
+                    }
+                    data.data.add(value);
+                }
+            }
+        }
+        return data;
+    }
+
+    public static void deleteDataByUuid(String uuid, String id) {
+        DBCollection dataColl = MongoDb.db().getCollection("carte-" + uuid);
+        BasicDBObject query = new BasicDBObject();
+        query.put(Data.UUID, id);
+        DBCursor cursor = dataColl.find(query);
+
+        if (cursor.hasNext()) {
+            DBObject mongo = cursor.next();
+            dataColl.remove(mongo);
+        }
+    }
+
+    public static void saveData(String uuid, String id, String[] datas) {
+        DBCollection dataColl = MongoDb.db().getCollection("carte-" + uuid);
+        BasicDBObject query = new BasicDBObject();
+        query.put(Data.UUID, id);
+        DBCursor cursor = dataColl.find(query);
+
+        List<String> headers = DataService.getDataHeader(uuid);
+        if (cursor.hasNext()) {
+            DBObject mongo = cursor.next();
+            for (int j = 0; j < headers.size(); j++) {
+                String key = headers.get(j);
+                if (!key.equals("UUID")) {
+                    mongo.put(key, datas[j]);
+                }
+            }
+            dataColl.update(new BasicDBObject().append(Data.UUID, id), mongo);
+        }
     }
 }
