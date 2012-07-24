@@ -28,7 +28,7 @@ page.about.thanks.txt=Merci aux personnes suivantes pour leur participation au h
 page.abbout
 
 page.contact=Contact
-page.contact.txt=<p>Voous appréciez le service ? Vous voulez nous faire un petit retour ?<br/>Ou au contraire, vous trouvez que ce site ne sert strictement à rien ?</p><p>Vous pouvez nous contacter et vous exprimer librement via ce formulaire de contact.</p>
+page.contact.txt=<p>Vous appréciez le service ? Vous voulez nous faire un petit retour ?<br/>Ou au contraire, vous trouvez que ce site ne sert strictement à rien ?</p><p>Vous pouvez nous contacter et vous exprimer librement via ce formulaire de contact.</p>
 page.contact.author=Votre nom
 page.contact.email=Votre adresse mail
 page.contact.message=Votre message
