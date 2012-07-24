@@ -97,10 +97,10 @@ public class CarteService {
         if (mongoCarte.containsField(Carte.USER_UUID))
             carte.user_uuid = (String) mongoCarte.get(Carte.USER_UUID);
 
-        if (mongoCarte.containsField(Carte.CENTER_LAT))
+        if (mongoCarte.containsField(Carte.CENTER_LAT) && !((Double) mongoCarte.get(Carte.CENTER_LAT)).isNaN())
             carte.centerLat = ((Double) mongoCarte.get(Carte.CENTER_LAT)).floatValue();
 
-        if (mongoCarte.containsField(Carte.CENTER_LNG))
+        if (mongoCarte.containsField(Carte.CENTER_LNG) && !((Double) mongoCarte.get(Carte.CENTER_LNG)).isNaN())
             carte.centerLng = ((Double) mongoCarte.get(Carte.CENTER_LNG)).floatValue();
 
         if (mongoCarte.containsField(Carte.CENTER_ZOOM))
