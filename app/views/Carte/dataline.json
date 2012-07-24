@@ -1,0 +1,8 @@
+{
+    "UUID": "${data.uuid}",
+    %{int i = 0}%
+    #{list items:headers, as:'header'}
+        "${header}":"%{String txt = data.data.get(i);}%${txt}"${header_isLast ? '' : ',' }
+        %{i++}%
+    #{/list}
+}
