@@ -17,7 +17,8 @@ import controllers.securesocial.SecureSocialPublic;
 public class Application extends AbstractController {
 
     public static void index() {
-        render();
+        String menu = "index";
+        render(menu);
     }
 
     public static void about() {
