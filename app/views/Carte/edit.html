@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 
-                <div class="control-group #{ifError 'centerLng'}error#{/ifError}">
+                <div class="control-group #{ifError 'carte.centerLng'}error#{/ifError}">
                     <label class="control-label" for="centerLng">&{'page.carte.item.centerLng'}</label>
                     <div class="controls">
                         <input type="text" id="centerLng" name="carte.centerLng" value="${carte?.centerLng}" placeholder="1.18"/>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 
-                <div class="control-group #{ifError 'centerLat'}error#{/ifError}">
+                <div class="control-group #{ifError 'carte.centerLng'}error#{/ifError}">
                     <label class="control-label" for="centerLat">&{'page.carte.item.centerLat'}</label>
                     <div class="controls">
                         <input type="text" id="centerLat" name="carte.centerLat" value="${carte?.centerLat}" placeholder="47.24"/>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 
-                <div class="control-group #{ifError 'centerZoom'}error#{/ifError}">
+                <div class="control-group #{ifError 'carte.centerZoom'}error#{/ifError}">
                     <label class="control-label" for="centerZoom">&{'page.carte.item.centerZoom'}</label>
                     <div class="controls">
                         #{select 'carte.centerZoom', value:carte?.centerZoom, id:'centerZoom', class:'small'}
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 
-                <div class="control-group #{ifError 'leafPileZoom'}error#{/ifError}">
+                <div class="control-group #{ifError 'carte.leafPileZoom'}error#{/ifError}">
                     <label class="control-label" for="leafPileZoom">&{'page.carte.item.leafPileZoom'}</label>
                     <div class="controls">
                         #{select 'carte.leafPileZoom', value:carte?.leafPileZoom, id:'leafPileZoom', class:'small'}

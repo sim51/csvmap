@@ -44,7 +44,7 @@
                 #{/if}
             #{/list}
             
-            map.addLayer(cloudmade).setView(new L.LatLng(47.24, 1.18), 6);
+            map.addLayer(cloudmade).setView(new L.LatLng(${carte.centerLat}, ${carte.centerLng}), ${carte.centerZoom});
     </script>
 #{/set}
 
