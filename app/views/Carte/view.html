@@ -33,14 +33,16 @@
             // setup the leafpile
             var leafpile = new L.Leafpile({maxZoomLevel:${carte.leafPileZoom}});
             map.addLayer(leafpile);
-
+            
+            %{int i = 0}%
             #{list items:datas, as:'data'}
+                %{i++}%
                 #{if data.longitude && data.latitude}
-                    var markerLocation${data.uuid} = new L.LatLng(${data.latitude},${data.longitude});
-                    var marker${data.uuid} = new L.Marker(markerLocation${data.uuid});
-                    leafpile.addMarker(marker${data.uuid});
-                    marker${data.uuid}.bindPopup("${data.text.raw()}");
-                    map.addLayer(marker${data.uuid});
+                    var markerLocation${i} = new L.LatLng(${data.latitude},${data.longitude});
+                    var marker${i} = new L.Marker(markerLocation${i});
+                    leafpile.addMarker(marker${i});
+                    marker${i}.bindPopup("${data.text.raw()}");
+                    map.addLayer(marker${i});
                 #{/if}
             #{/list}
             
