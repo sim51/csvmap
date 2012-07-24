@@ -28,7 +28,7 @@
             });
 
             // add the layer to the map, set the view to a given place and zoom
-            map.addLayer(cloudmade).setView(new L.LatLng(${carte.centerLat}, ${carte.centerLng}), ${carte.centerZoom});
+            map.addLayer(cloudmade).setView(new L.LatLng(${carte.centerLat}, ${carte.centerLng}), 1);
             
             // setup the leafpile
             var leafpile = new L.Leafpile({maxZoomLevel:${carte.leafPileZoom}});
