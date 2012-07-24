@@ -1,5 +1,13 @@
-body {
-	padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+/* 40px to make the container go all the way to the bottom of the topbar */
+@media (min-width: 980px){
+	body {
+		padding-top: 40px;
+	}
+}
+@media (max-width: 980px){
+    .navbar-fixed-top {
+        margin-bottom: 0px;
+    }
 }
 .content {
     background-color: #FFFFFF;
