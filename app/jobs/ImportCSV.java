@@ -43,7 +43,7 @@ public class ImportCSV extends Job<Integer> {
     public Integer doJobWithResult() throws Exception {
         Boolean geocoding = Boolean.FALSE;
         String[] format = new String[0];
-        if (geocodingString != null) {
+        if (geocodingString != null && !geocodingString.trim().equals("")) {
             geocoding = Boolean.TRUE;
             format = geocodingString.split("\\+");
         }
