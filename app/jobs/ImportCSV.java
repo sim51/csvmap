@@ -68,7 +68,15 @@ public class ImportCSV extends Job<Integer> {
                         nbItem++;
                         mongo.put("UUID", Codec.UUID());
                         for (int i = 0; i < data.length; i++) {
-                            mongo.put(labels[i], data[i]);
+                            if (labels[i].equals("LONGITUDE") | labels[i].equals("LATITUDE")) {
+                                String value = data[i];
+                                value = value.replace(",", ".");
+                                Float flt = Float.valueOf(value);
+                                mongo.put(labels[i], flt.toString());
+                            }
+                            else {
+                                mongo.put(labels[i], data[i]);
+                            }
                         }
                         if (geocoding) {
                             String adresse = "";
