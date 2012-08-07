@@ -14,10 +14,8 @@
     <![endif]-->
 #{/set}
 #{set 'moreScripts'}
-    <script src="https://raw.github.com/CloudMade/Leaflet/master/dist/leaflet.js"></script>
-    <script src="https://raw.github.com/cavis/leafpile/master/src/LeafpileGroup.js"></script>
-    <script src="https://raw.github.com/cavis/leafpile/master/src/LeafpileIcon.js"></script>
-    <script src="https://raw.github.com/cavis/leafpile/master/src/Leafpile.js"></script>
+    <script src="@{'/public/javascripts/leaflet.js'}"></script>
+    <script src="@{'/public/javascripts/leafpile.min.js'}"></script>
     
     <script type="text/javascript">
             // initialize the map on the "map" div
@@ -40,7 +38,7 @@
             #{list items:datas, as:'data'}
                 %{i++}%
                 #{if data.longitude && data.latitude}
-                    var markerLocation${i} = new L.LatLng(${data.latitude},${data.longitude});
+                    var markerLocation${i} = new L.LatLng(${data.longitude},${data.latitude});
                     var marker${i} = new L.Marker(markerLocation${i});
                     leafpile.addMarker(marker${i});
                     marker${i}.bindPopup("${data.text.raw()}");
