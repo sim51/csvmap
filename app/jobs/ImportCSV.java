@@ -1,9 +1,12 @@
 package jobs;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
 
@@ -72,10 +75,10 @@ public class ImportCSV extends Job<Integer> {
                                 String value = data[i];
                                 value = value.replace(",", ".");
                                 Float flt = Float.valueOf(value);
-                                mongo.put(labels[i], flt.toString());
+                                mongo.put(labels[i].replaceAll("\\.", ""), flt.toString());
                             }
                             else {
-                                mongo.put(labels[i], data[i]);
+                                mongo.put(labels[i].replaceAll("\\.", ""), data[i]);
                             }
                         }
                         if (geocoding) {
@@ -108,4 +111,23 @@ public class ImportCSV extends Job<Integer> {
         }
         return nbItem;
     }
+
+    public static Integer countLine(String filename) throws IOException {
+        InputStream is = new BufferedInputStream(new FileInputStream(filename));
+        try {
+            byte[] c = new byte[1024];
+            int count = 0;
+            int readChars = 0;
+            while ((readChars = is.read(c)) != -1) {
+                for (int i = 0; i < readChars; ++i) {
+                    if (c[i] == '\n')
+                        ++count;
+                }
+            }
+            return count;
+        } finally {
+            is.close();
+        }
+    }
+
 }
