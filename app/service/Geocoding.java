@@ -40,8 +40,8 @@ public class Geocoding {
                         .split(",");
                 if (result.length >= 2 & result[0] != null && result[1] != null) {
                     try {
-                        coord.put(LONGITUDE, Float.valueOf(result[0]));
-                        coord.put(LATITUDE, Float.valueOf(result[1]));
+                        coord.put(LATITUDE, Float.valueOf(result[0]));
+                        coord.put(LONGITUDE, Float.valueOf(result[1]));
                     } catch (NumberFormatException e) {
                         Logger.debug("Can't find geolocalisation !!!");
                     }
